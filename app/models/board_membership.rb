@@ -1,4 +1,4 @@
-class BoardMemberships < ActiveRecord::Base
+class BoardMembership < ActiveRecord::Base
   attr_accessible :board_id, :user_id
 
   validates :user, :board, :presence => true
