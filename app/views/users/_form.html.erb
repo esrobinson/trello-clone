@@ -1,0 +1,20 @@
+<form action="<%= action_url %>" method="POST">
+  <input type="hidden" name="authenticity_token"
+           value="<%= form_authenticity_token %>">
+  <% if @user.persisted? %>
+    <input type="hidden" name="_method" value="PUT">
+  <%end%>
+  <label for="user_email">Email</label>
+  <input type="text" id="user_email" name="user[email]"
+    value=<%= @user.email %>>
+    <br>
+  <label for="user_username">Username</label>
+  <input type="text" id="user_username" name="user[username]"
+    value=<%=@user.username %>>
+    <br>
+  <% if !@user.persisted? %>
+    <label for="user_password">Password</label>
+    <input type="password" id="user_password" name="user[password]">
+  <% end %>
+  <input type="submit" value="<%= submit_verb %>">
+</form>

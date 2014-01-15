@@ -1,0 +1,5 @@
+<h2><%= @user.username %>'s Page</h2>
+
+<% if current_user && current_user.id = @user.id%>
+  <%= link_to "Edit User", edit_user_url(@user) %>
+<% end %>

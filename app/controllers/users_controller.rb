@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_filter :require_login, :only => [:edit, :update]
+
   def new
     @user = User.new()
     render :new
@@ -17,17 +19,26 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    render :show
+    @user = User.find_by_id(params[:id])
+    if @user
+      render :show
+    else
+      render :text => "404 Not Found", :status => 404
+    end
+
   end
 
   def edit
-    @user = User.find(params[:id])
-    render :edit
+    @user = User.find_by_id(params[:id])
+    if @user && @user.id == current_user.id
+      render :edit
+    else
+      render :text => "404 Not Found", :status => 404
+    end
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find_by_id(params[:id])
     if @user.update_attributes(params[:user])
       login!(@user)
       redirect_to :root

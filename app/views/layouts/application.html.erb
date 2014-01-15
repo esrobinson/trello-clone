@@ -8,6 +8,20 @@
 </head>
 <body>
 
+<% if current_user %>
+  <h2>Welcome <%= current_user.username %>!</h2>
+  <%= button_to "Sign Out", session_url, {:method => :delete} %>
+<% else %>
+  <%= link_to "Sign In", new_session_url %>
+  <%= link_to "Create Account", new_user_url %>
+<% end %>
+
+<ul>
+<% flash[:notices].try(:each) do |notice| %>
+  <li><%= notice %></li>
+  <% end %>
+</ul>
+
 <%= yield %>
 
 </body>
