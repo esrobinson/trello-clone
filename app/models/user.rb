@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   before_validation  :reset_session_token, :on => :create
 
   has_many :memberships, :class_name => "BoardMembership", :inverse_of => :user
-  has_many :member_board, :through => :memberships, :source => :board
+  has_many :member_boards, :through => :memberships, :source => :board
 
   def self.find_by_credentials(params)
     user = User.find_by_email(params[:email])

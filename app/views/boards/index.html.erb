@@ -1,0 +1,8 @@
+<h2>Your Boards</h2>
+<ul>
+<% @boards.each do |board| %>
+  <li><a href="<%= board_url(board) %>"><%= board.name %></a></li>
+<% end %>
+</ul>
+
+<a><%= link_to "New Board", new_board_url %>
