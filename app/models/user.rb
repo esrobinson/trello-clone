@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 
   has_many :memberships, :class_name => "BoardMembership", :inverse_of => :user
   has_many :member_boards, :through => :memberships, :source => :board
+  has_many :administrations, :class_name => "BoardAdmin", :inverse_of => :user
+  has_many :administered_boards, :through => :administrations, :source => :board
 
   def self.find_by_credentials(params)
     user = User.find_by_email(params[:email])
