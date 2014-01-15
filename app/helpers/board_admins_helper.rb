@@ -1,0 +1,2 @@
+module BoardAdminsHelper
+end

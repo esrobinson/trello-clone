@@ -15,6 +15,7 @@ class BoardsController < ApplicationController
   def create
     @board = Board.new(params[:board])
     @board.members << current_user
+    @board.admins << current_user
     if @board.save
       redirect_to board_url(@board)
     else
@@ -24,7 +25,6 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @users = User.all
     @board = Board.find_by_id(params[:id])
     if @board && is_member?(@board, current_user)
       render :show
@@ -34,10 +34,26 @@ class BoardsController < ApplicationController
   end
 
   def edit
-
+    @users = User.all
+    @board = Board.find_by_id(params[:id])
+    if @board && is_admin?(@board, current_user)
+      render :edit
+    else
+      render :text => "404 Not Found", :status => 404
+    end
   end
 
   def update
+    @board = Board.find_by_id(params[:id])
+    if @board && is_admin?(@board, current_user)
+      if @board.update_attributes(params[:board])
+        redirect_to board_url(@board)
+      else
+        flash.now[:notices] = @board.errors.full_messages
+      end
+    else
+      render :text => "404 Not Found", :status => 404
+    end
   end
 
   def destroy

@@ -5,5 +5,5 @@ class Board < ActiveRecord::Base
   has_many :memberships, :class_name => "BoardMembership", :inverse_of => :board
   has_many :members, :through => :memberships, :source => :user
   has_many :administrations, :class_name => "BoardAdmin", :inverse_of => :board
-  has_many :adminstrators, :through => :adminstrations, :source => :user
+  has_many :admins, :through => :administrations, :source => :user
 end

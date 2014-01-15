@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140115194829) do
+ActiveRecord::Schema.define(:version => 20140115211219) do
 
   create_table "board_admins", :force => true do |t|
     t.integer  "user_id"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20140115194829) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "board_admins", ["board_id"], :name => "index_board_admins_on_board_id", :unique => true
+  add_index "board_admins", ["board_id"], :name => "index_board_admins_on_board_id"
   add_index "board_admins", ["user_id", "board_id"], :name => "index_board_admins_on_user_id_and_board_id", :unique => true
 
   create_table "board_memberships", :force => true do |t|

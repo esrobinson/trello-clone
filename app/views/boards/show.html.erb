@@ -1,3 +1,6 @@
 <h2><%= @board.name %></h2>
 
-<%= render "board_memberships/new" %>
+
+<% if is_admin?(@board, current_user) %>
+  <%= link_to "Edit Board", edit_board_url(@board) %>
+<% end %>
