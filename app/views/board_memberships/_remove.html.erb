@@ -1,0 +1,14 @@
+<form action="<%= board_board_memberships_url(@board) %>" method="POST">
+  <input type="hidden" name="authenticity_token"
+           value="<%= form_authenticity_token %>">
+  <select name="board_membership[user_id]">
+    <option selected></option>
+    <% @board.memberships.includes(:user).each do |membership| %>
+      <% if !is_admin?(@board, membership.user) && !membership.user.id == current_user.id %>
+      <option value="<%= membership.id %>"><%= membership.user.username %>
+      </option>
+      <% end %>
+    <% end %>
+  </select>
+  <input type="submit" value="Remove Member">
+</form>

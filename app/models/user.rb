@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   validates :email, :username, :password_digest, :presence => true
   validates :password, :length => { :minimum => 6 }, :on => :create
+  validates :email, :uniqueness => true
 
   before_validation  :reset_session_token, :on => :create
 
