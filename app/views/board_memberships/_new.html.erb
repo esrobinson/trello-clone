@@ -1,1 +1,13 @@
-<form action="<%= board_board_memberships_url(@board) %>">
+<form action="<%= board_board_memberships_url(@board) %>" method="POST">
+  <input type="hidden" name="authenticity_token"
+           value="<%= form_authenticity_token %>">
+  <select name="board_membership[user_id]">
+    <option selected></option>
+    <% @users.each do |user| %>
+      <% if !is_member?(@board, user) %>
+      <option value="<%= user.id %>"><%= user.username %></option>
+      <% end %>
+    <% end %>
+  </select>
+  <input type="submit" value="Add Member">
+</form>

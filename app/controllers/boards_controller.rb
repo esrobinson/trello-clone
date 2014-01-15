@@ -24,8 +24,9 @@ class BoardsController < ApplicationController
   end
 
   def show
+    @users = User.all
     @board = Board.find_by_id(params[:id])
-    if @board && is_member?(@board)
+    if @board && is_member?(@board, current_user)
       render :show
     else
       render :text => "404 Not Found", :status => 404

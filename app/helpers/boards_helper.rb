@@ -1,7 +1,7 @@
 module BoardsHelper
 
-  def is_member?(board)
-    board.members.any?{ |member| member.id == current_user.id }
+  def is_member?(board, user)
+    board.members.any?{ |member| member.id == user.id }
   end
 
 end
