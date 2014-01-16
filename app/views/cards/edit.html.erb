@@ -9,6 +9,12 @@
   <label for="card_name">Card Name</label>
   <input type="text" id="card_name" name="card[name]" value="<%= @card.name %>">
   <br>
+  <label for="card_description">Card Description</label>
+  <input type="text" id="card_description" name="card[description]" value="<%= @card.description %>">
+  <br>
+  <label for="card_due_date">Due Date</label>
+  <input type="date" id="card_due_date" name="card[due_date]" value="<%= @card.due_date %>">
+  <br>
   <label for="card_position">Card Position</label>
   <select id="card_position" name="card[position]">
     <% @card.list.cards.length.times do |position| %>

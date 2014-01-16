@@ -1,5 +1,8 @@
 <%= link_to "<- #{@card.list.name}",  list_url(@card.list) %>
 
 <h2><%= @card.name %></h2>
+<h4>Due Date: <%= @card.due_date %></h4>
+
+<p><%= @card.description %></p>
 
 <%= link_to "Edit Card", edit_card_url(@card) %>
