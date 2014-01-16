@@ -12,4 +12,10 @@
  *= require_tree .
  */
 
-@import "bootstrap"
+@import "bootstrap";
+
+div.board-summary {
+  border: solid thin black;
+  height: 300px;
+  margin: 10px;
+}

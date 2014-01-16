@@ -57,6 +57,8 @@ module TrelloClone
     config.assets.enabled = true
     config.assets.initialize_on_precompile = false
 
+    config.assets.paths << "app/assets/templates"
+
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
   end
