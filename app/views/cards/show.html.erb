@@ -1,10 +1,20 @@
 <%= link_to "<- #{@card.list.name}",  list_url(@card.list) %>
 
 <h2><%= @card.name %></h2>
-<h4>Due Date: <%= @card.due_date %></h4>
+<% if @card.due_date %>
+  <h4>Due Date: <%= @card.due_date %></h4>
+<% end %>
 
 <p><%= @card.description %></p>
 
+<h4>Checklists</h4>
+<ul>
+  <% @card.checklists.each do |checklist| %>
+    <li><%= link_to checklist.name, checklist_url(checklist) %></li>
+  <% end %>
+</ul>
+
+<%= link_to "New Checklist", new_card_checklist_url(@card) %>
 <h4>Comments</h4>
 
 <ul>

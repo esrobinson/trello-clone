@@ -1,0 +1,17 @@
+<h2>Edit checklist</h2>
+
+<form action="<%= checklist_url(@checklist) %>" method="POST">
+  <input type="hidden" name="_method" value="PUT">
+  <input type="hidden" name="authenticity_token"
+           value="<%= form_authenticity_token %>">
+  <label for="checklist_name">Checklist Name</label>
+  <input type="text" id="checklist_name" name="checklist[name]" value="<%= @checklist.name %>">
+  <br>
+  <label for="checklist_position">Checklist Position</label>
+  <select id="checklist_position" name="checklist[position]">
+    <% @checklist.card.checklists.length.times do |position| %>
+      <option <%= "selected" if @checklist.card.checklists[position].id == @checklist.id %> value="<%= position %>"><%= position + 1 %></option>
+    <% end %>
+    <br>
+  <input type="submit" value="Edit Checklist">
+</form>
