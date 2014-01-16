@@ -1,4 +1,12 @@
 <%= link_to "<-#{@list.board.name}", board_url(@list.board) %>
 <h2><%= @list.name %></h2>
 
+<ul>
+  <% @list.cards.each do |card| %>
+  <li><%= link_to card.name, card_url(card) %></li>
+  <% end %>
+</ul>
+
+<%= link_to "New Card", new_list_card_url(@list) %>
+<br>
 <%= link_to "Edit List", edit_list_url(@list) %>

@@ -1,0 +1,9 @@
+<h2>Add a card</h2>
+
+<form action="<%= list_cards_url(@list) %>" method="POST">
+  <input type="hidden" name="authenticity_token"
+           value="<%= form_authenticity_token %>">
+  <label for="card_name">Card Name</label>
+  <input type="text" id="card_name" name="card[name]">
+  <input type="submit" value="Add Card">
+</form>

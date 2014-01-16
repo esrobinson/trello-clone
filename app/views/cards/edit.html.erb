@@ -1,0 +1,19 @@
+<%= link_to "<- Back to Card", card_url(@card) %>
+
+<h2>Edit Card</h2>
+
+<form action="<%= card_url(@card) %>" method="POST">
+  <input type="hidden" name="authenticity_token"
+           value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="PUT">
+  <label for="card_name">Card Name</label>
+  <input type="text" id="card_name" name="card[name]" value="<%= @card.name %>">
+  <br>
+  <label for="card_position">Card Position</label>
+  <select id="card_position" name="card[position]">
+    <% @card.list.cards.length.times do |position| %>
+      <option <%= "selected" if @card.list.cards[position].id == @card.id %> value="<%= position %>"><%= position + 1 %></option>
+    <% end %>
+    <br>
+  <input type="submit" value="Update Card">
+</form>

@@ -13,7 +13,9 @@ class CardsController < ApplicationController
 
   def create
     @card = Card.new(params[:card])
-    @card.list_id = params[:list_id]
+    @list = List.find_by_id(params[:list_id])
+    @card.list = @list
+    @card.position = @list.cards.length
     if @card.save
       redirect_to card_url(@card)
     else
