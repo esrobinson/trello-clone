@@ -1,3 +1,5 @@
+<%= link_to "<-#{@card.name}", card_url(@card) %>
+
 <h2>Add a checklist</h2>
 
 <form action="<%= card_checklists_url(@card) %>" method="POST">
