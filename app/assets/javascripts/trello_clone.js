@@ -9,5 +9,5 @@ window.TrelloClone = {
 };
 
 $(document).ready(function(){
-  TrelloClone.initialize();
+  //TrelloClone.initialize();
 });
