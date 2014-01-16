@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   def create
-    @checklist = Checklist.find_by_id(params[:id])
+    @checklist = Checklist.find_by_id(params[:checklist_id])
     @item = Item.new(params[:item])
     @item.checklist = @checklist
     @item.position = @checklist.items.length

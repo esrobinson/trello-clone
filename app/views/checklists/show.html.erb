@@ -1,4 +1,19 @@
 <%= link_to "<-#{@checklist.card.name}", card_url(@checklist.card) %>
 <h2><%= @checklist.name %></h2>
 
+<ul>
+<% @checklist.items.each do |item| %>
+  <li>
+    <% if item.checked %>
+      <del><%= item.body %></del>
+    <% else %>
+      <%= item.body %>
+    <% end %>
+    <% check_verb = item.checked ? "Uncheck" : "Check" %>
+    <%= button_to check_verb, item_url(item), {:method => :put} %>
+
+  </li>
+<% end %>
+</ul>
+<%= render "items/form" %>
 <%= link_to "Edit Checklist", edit_checklist_url(@checklist) %>
