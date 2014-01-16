@@ -3,4 +3,5 @@ class Card < ActiveRecord::Base
   validates :list, :name, :presence => true
 
   belongs_to :list, :inverse_of => :cards
+  has_many :comments, :inverse_of => :card
 end
