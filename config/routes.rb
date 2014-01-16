@@ -5,7 +5,10 @@ TrelloClone::Application.routes.draw do
     resources :board_admins, :only => [:create]
     resources :lists, :only => [:create, :new]
   end
-  resources :lists, :only => [:show, :edit, :update, :destroy]
+  resources :lists, :only => [:show, :edit, :update, :destroy] do
+    resources :cards, :only => [:create, :new]
+  end
+  resources :cards, :only => [:show, :edit, :update, :destroy]
 
   resource :session, :only => [:new, :create, :destroy]
 

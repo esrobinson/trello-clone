@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140116003015) do
+ActiveRecord::Schema.define(:version => 20140116010806) do
 
   create_table "board_admins", :force => true do |t|
     t.integer  "user_id"
@@ -39,6 +39,19 @@ ActiveRecord::Schema.define(:version => 20140116003015) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "cards", :force => true do |t|
+    t.string   "name",                           :null => false
+    t.string   "description"
+    t.date     "due_date"
+    t.boolean  "archived",    :default => false
+    t.integer  "list_id",                        :null => false
+    t.float    "position",                       :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "cards", ["list_id", "position"], :name => "index_cards_on_list_id_and_position", :unique => true
 
   create_table "lists", :force => true do |t|
     t.string   "name",       :null => false

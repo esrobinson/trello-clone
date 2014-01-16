@@ -1,5 +1,7 @@
 class ListsController < ApplicationController
 
+  before_filter :require_login
+
   def new
     @board = Board.find_by_id(params[:board_id])
     if @board && is_member?(@board, current_user)
@@ -45,7 +47,6 @@ class ListsController < ApplicationController
     @list = List.find_by_id(params[:id])
     lists = @list.board.lists
     new_position = params[:list][:position].to_i
-    p new_position
     if new_position == 0
       position_value = lists[0].position - 1
     elsif new_position == lists.length - 1
