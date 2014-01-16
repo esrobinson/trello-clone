@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140116022326) do
+ActiveRecord::Schema.define(:version => 20140116055543) do
 
   create_table "board_admins", :force => true do |t|
     t.integer  "user_id"
@@ -72,6 +72,17 @@ ActiveRecord::Schema.define(:version => 20140116022326) do
   end
 
   add_index "comments", ["card_id"], :name => "index_comments_on_card_id"
+
+  create_table "items", :force => true do |t|
+    t.string   "body",                            :null => false
+    t.boolean  "checked",      :default => false
+    t.float    "position",                        :null => false
+    t.integer  "checklist_id",                    :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "items", ["checklist_id", "position"], :name => "index_items_on_checklist_id_and_position", :unique => true
 
   create_table "lists", :force => true do |t|
     t.string   "name",       :null => false
