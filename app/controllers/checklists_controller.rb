@@ -30,6 +30,12 @@ class ChecklistsController < ApplicationController
   end
 
   def edit
+    @checklist = Checklist.find_by_id(params[:id])
+    if @checklist
+      render :edit
+    else
+      render :text => "404 Not Found", :status => 404
+    end
   end
 
   def update
