@@ -10,7 +10,9 @@ TrelloClone::Application.routes.draw do
   end
   resources :cards, :only => [:show, :edit, :update, :destroy] do
     resources :comments, :only => [:create]
+    resources :checklists, :only => [:new, :create]
   end
+  resources :checklists, :only => [:show, :edit, :update, :destoy]
 
   resource :session, :only => [:new, :create, :destroy]
 
