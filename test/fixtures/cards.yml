@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyString
+  due_date: 2014-01-15
+  archived: false
+  list_id: 1
+  position: 1.5
+
+two:
+  name: MyString
+  description: MyString
+  due_date: 2014-01-15
+  archived: false
+  list_id: 1
+  position: 1.5

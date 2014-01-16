@@ -1,6 +1,14 @@
+<%= link_to "<-Boards", boards_url %>
+
 <h2><%= @board.name %></h2>
 
-
+<ul>
+<% @board.lists.each do |list| %>
+  <li><%= link_to list.name, list_url(list) %></li>
+<% end %>
+<br>
+<%= link_to "New List", new_board_list_url(@board) %>
+<br>
 <% if is_admin?(@board, current_user) %>
   <%= link_to "Edit Board", edit_board_url(@board) %>
 <% end %>

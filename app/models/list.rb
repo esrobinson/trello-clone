@@ -1,6 +1,6 @@
 class List < ActiveRecord::Base
-  attr_accessible :name, :order
+  attr_accessible :name, :position
 
-  validates :name, :board, :order, :presence => true
+  validates :name, :board, :position, :presence => true
   belongs_to :board, :inverse_of => :lists
 end

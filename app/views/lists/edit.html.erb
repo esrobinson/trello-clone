@@ -1,0 +1,17 @@
+<h2>Edit List</h2>
+
+<form action="<%= list_url(@list) %>" method="POST">
+  <input type="hidden" name="authenticity_token"
+           value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="PUT">
+  <label for="list_name">List Name</label>
+  <input type="text" id="list_name" name="list[name]" value="<%= @list.name %>">
+  <br>
+  <label for="list_position">List Position</label>
+  <select id="list_position" name="list[position]">
+    <% @list.board.lists.length.times do |position| %>
+      <option <%= "selected" if @list.board.lists[position].id == @list.id %> value="<%= position %>"><%= position + 1 %></option>
+    <% end %>
+    <br>
+  <input type="submit" value="Update List">
+</form>
