@@ -5,4 +5,14 @@
 
 <p><%= @card.description %></p>
 
+<h4>Comments</h4>
+
+<ul>
+  <% @card.comments.each do |comment| %>
+  <li><%= comment.body %> -- <strong><%= comment.user.username %></strong></li>
+  <% end %>
+</ul>
+
+<%= render "comments/form" %>
+
 <%= link_to "Edit Card", edit_card_url(@card) %>

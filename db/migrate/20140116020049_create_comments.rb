@@ -8,6 +8,6 @@ class CreateComments < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :card_id
+    add_index :comments, :card_id
   end
 end

@@ -1,0 +1,9 @@
+<h3>Add a comment</h3>
+
+<form action="<%= card_comments_url(@card) %>" method="POST">
+  <input type="hidden" name="authenticity_token"
+           value="<%= form_authenticity_token %>">
+  <label for="comment_body">Comment</label>
+  <input type="text" id="comment_body" name="comment[body]">
+  <input type="submit" value="Add Comment">
+</form>

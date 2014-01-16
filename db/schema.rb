@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140116010806) do
+ActiveRecord::Schema.define(:version => 20140116020049) do
 
   create_table "board_admins", :force => true do |t|
     t.integer  "user_id"
@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(:version => 20140116010806) do
   end
 
   add_index "cards", ["list_id", "position"], :name => "index_cards_on_list_id_and_position", :unique => true
+
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.integer  "card_id",    :null => false
+    t.string   "body",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "comments", ["card_id"], :name => "index_comments_on_card_id"
 
   create_table "lists", :force => true do |t|
     t.string   "name",       :null => false
