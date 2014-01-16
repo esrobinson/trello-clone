@@ -12,7 +12,11 @@ TrelloClone::Application.routes.draw do
     resources :comments, :only => [:create]
     resources :checklists, :only => [:new, :create]
   end
-  resources :checklists, :only => [:show, :edit, :update, :destoy]
+  resources :checklists, :only => [:show, :edit, :update, :destoy] do
+    resources :items, :only => [:create]
+  end
+
+  resources :items, :only => [:update, :destroy]
 
   resource :session, :only => [:new, :create, :destroy]
 
