@@ -5,5 +5,11 @@ TrelloClone.Models.List = Backbone.Model.extend({
     } else{
       return "/api/lists/"+this.id
     }
+  },
+
+  parse: function(data){
+    console.log(data.cards)
+    data.cards = new TrelloClone.Collections.Cards(data.cards, {list: this});
+    return data;
   }
 })
