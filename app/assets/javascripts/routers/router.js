@@ -7,7 +7,8 @@ TrelloClone.Routers.Router = Backbone.Router.extend({
   routes: {
     "": "boardIndex",
     "boards/new": "newBoard",
-    "boards/:id": "showBoard"
+    "boards/:id": "showBoard",
+    "cards/:id": "showCard"
   },
 
   boardIndex: function(){
@@ -35,6 +36,10 @@ TrelloClone.Routers.Router = Backbone.Router.extend({
         TrelloClone.router._swapView(view);
       }
     });
+  },
+
+  showCard: function(id){
+
   },
 
   _swapView: function(view){

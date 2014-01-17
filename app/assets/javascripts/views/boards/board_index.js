@@ -5,7 +5,7 @@ TrelloClone.Views.BoardIndex = Backbone.View.extend({
   },
 
   events: {
-    "click div.board-summary": "boardDetail"
+    "click a#new-board-trigger": "boardForm"
   },
 
   template: JST["boards/board_index"],
@@ -15,8 +15,11 @@ TrelloClone.Views.BoardIndex = Backbone.View.extend({
     return this;
   },
 
-  boardDetail: function(event){
-    id = $(event.currentTarget).data('id')
-    Backbone.history.navigate('#boards/' + id, {trigger: true})
+  boardForm: function(event){
+    event.preventDefault();
+    form = new TrelloClone.Views.NewBoard({ collection: this.collection });
+    this.$el.append(form.render().$el)
+    form.$el.modal();
   }
+
 });

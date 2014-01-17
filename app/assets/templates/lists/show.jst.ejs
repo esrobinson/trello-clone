@@ -2,7 +2,7 @@
   <h4 class="list-group-item-heading"><%= list.get("name") %></h4>
 </div>
 <% list.get('cards').each(function(card){ %>
-   <a href="#cards/<%= card.id %>" class="list-group-item">
+   <a href="#" class="list-group-item show-card" data-id="<%= card.id %>">
      <%= card.get("name") %>
    </a>
 <% }); %>

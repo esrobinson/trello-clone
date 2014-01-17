@@ -5,7 +5,8 @@ TrelloClone.Views.ListShow = Backbone.View.extend({
   },
 
   events: {
-    "click a#new-card-trigger": "cardForm"
+    "click a#new-card-trigger": "cardForm",
+    "click a.show-card": "showCard"
   },
 
   template: JST["lists/show"],
@@ -22,6 +23,15 @@ TrelloClone.Views.ListShow = Backbone.View.extend({
     cards = this.model.get('cards')
     form = new TrelloClone.Views.NewCard({ collection: cards})
     $wrapper.html(form.render().$el);
+  },
+
+  showCard: function(event){
+    event.preventDefault();
+    var cardId = $(event.currentTarget).data('id');
+    var card = this.model.get('cards').get(cardId);
+    var show = new TrelloClone.Views.ShowCard({ model: card });
+    this.$el.append(show.render().$el);
+    show.$el.modal()
   }
 
 

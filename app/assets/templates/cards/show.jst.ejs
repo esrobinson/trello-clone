@@ -1,0 +1,26 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h4 class="modal-title"><%= card.get("name") %></h4>
+    </div>
+    <div class="modal-body">
+      <form id="new-board-form">
+        <div class="form-group">
+          <label for="board_name">Name</label>
+          <input type="text" id="board_name" name="board[name]">
+        </div>
+        <input type="hidden" name="board[private]" value=false>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="board[private]"> Private
+          </label>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <button type="button" id="submit-board" class="btn btn-primary">Create Board</button>
+    </div>
+  </div>
+</div>

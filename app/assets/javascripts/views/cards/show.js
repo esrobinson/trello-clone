@@ -1,10 +1,9 @@
-TrelloClone.Views.NewBoard = Backbone.View.extend({
+TrelloClone.Views.ShowCard = Backbone.View.extend({
 
   initialize: function(options){
     var view = this;
     this.$el.on('hidden.bs.modal', function(e){
       view.remove();
-      Backbone.history.navigate("/", {trigger: false})
     });
   },
 
@@ -13,11 +12,14 @@ TrelloClone.Views.NewBoard = Backbone.View.extend({
     "click button#submit-board": "submit"
   },
 
-  template: JST["boards/new"],
+  template: JST["cards/show"],
 
   render: function(){
+    var title = new TrelloClone.Views.CardTitle({ model: this.model });
+
     this.$el.addClass("modal");
-    this.$el.html(this.template());
+    this.$el.html(this.template({ card: this.model }));
+    this.$('div#card-title-wrapper').html(title.render().$el);
     return this;
   },
 
