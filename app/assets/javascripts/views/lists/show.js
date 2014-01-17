@@ -1,8 +1,6 @@
 TrelloClone.Views.ListShow = Backbone.View.extend({
 
   initialize: function(options){
-    var cards = this.model.get('cards');
-    console.log(cards);
     this.listenTo(this.model, "change:title change:cards", this.render);
   },
 
@@ -22,7 +20,7 @@ TrelloClone.Views.ListShow = Backbone.View.extend({
     event.preventDefault();
     $wrapper = $(this.$("div#new-card-wrapper"));
     cards = this.model.get('cards')
-    form = new TrelloClone.Views.NewList({ collection: cards})
+    form = new TrelloClone.Views.NewCard({ collection: cards})
     $wrapper.html(form.render().$el);
   }
 

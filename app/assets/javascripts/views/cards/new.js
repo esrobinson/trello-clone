@@ -1,10 +1,10 @@
-TrelloClone.Views.NewList = Backbone.View.extend({
+TrelloClone.Views.NewCard = Backbone.View.extend({
 
   events: {
-    "submit #new-list-form": "submit"
+    "submit #new-card-form": "submit"
   },
 
-  template: JST["lists/new"],
+  template: JST["cards/new"],
 
   render: function(){
     this.$el.html(this.template());
@@ -18,7 +18,7 @@ TrelloClone.Views.NewList = Backbone.View.extend({
     this.collection.create(formData, {
       success: function(){
         view.remove();
-        view.collection.board.trigger("change:lists");
+        view.collection.list.trigger("change:cards");
       }
     })
 
