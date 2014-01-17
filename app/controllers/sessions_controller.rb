@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     @user = User.find_by_credentials(params[:user])
     if @user
       login!(@user)
-      redirect_to boards_url
+      redirect_to "/backbone"
     else
       flash.now[:notices] = ["Invalid email/password"]
       render :new

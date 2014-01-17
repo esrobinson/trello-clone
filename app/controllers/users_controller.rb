@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       login!(@user)
-      redirect_to boards_url
+      redirect_to "/backbone"
     else
       flash.now[:notices] = @user.errors.full_messages
       render :new

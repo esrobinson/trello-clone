@@ -8,7 +8,6 @@ TrelloClone.Models.List = Backbone.Model.extend({
   },
 
   parse: function(data){
-    console.log(data.cards)
     data.cards = new TrelloClone.Collections.Cards(data.cards, {list: this});
     return data;
   }

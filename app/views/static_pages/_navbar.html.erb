@@ -1,0 +1,52 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">TrelloClone</a>
+  </div>
+
+  <div class="collapse navbar-collapse" id="navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <% if logged_in? %>
+      <li class="dropdown">
+  			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          Boards
+					<b class="caret"></b>
+        </a>
+				<ul class="dropdown-menu">
+          <li><a href="#">Board Index</a></li>
+          <li class="divider"></li>
+					<% current_user.member_boards.each do |board| %>
+            <li><a href="#boards/<%= board.id %>"><%= board.name %></a></li>
+          <% end %>
+				</ul>
+			</li>
+      <% end %>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <% if logged_in? %>
+      <li class="dropdown">
+  			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <%= current_user.username %>
+					<b class="caret"></b>
+        </a>
+				<ul class="dropdown-menu">
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Settings</a></li>
+          <li class="divider"></li>
+          <li class="text-center">
+            <%= button_to "Sign Out", session_url, {:method => :delete, :class => "btn btn-danger"} %></li>
+				</ul>
+			</li>
+      <% else %>
+        <li><a href="/users/new">Sign Up!</a></li>
+        <li><a href="/session/new">Sign In!</a></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
