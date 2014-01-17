@@ -4,6 +4,7 @@ TrelloClone.Views.ShowCard = Backbone.View.extend({
     var view = this;
     this.$el.on('hidden.bs.modal', function(e){
       view.remove();
+      view.model.collection.list.trigger("change:cards");
     });
   },
 

@@ -32,7 +32,7 @@ class Api::CardsController < ApplicationController
     elsif new_position == cards.length - 1
       position_value = (cards.length + cards[new_position].position) / 2
     else
-      position_value == (cards[new_position - 1].position +
+      position_value = (cards[new_position - 1].position +
                          cards[new_position].position) / 2
     end
     params[:card][:position] = position_value

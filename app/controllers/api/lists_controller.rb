@@ -33,13 +33,13 @@ class Api::ListsController < ApplicationController
   def update
     @list = List.find_by_id(params[:id])
     lists = @list.board.lists
-    new_position = params[:list][:position].to_i
+    new_position = params[:card][:position].to_i
     if new_position == 0
       position_value = lists[0].position - 1
     elsif new_position == lists.length - 1
       position_value = (lists.length + lists[new_position].position) / 2
     else
-      position_value == (lists[new_position - 1].position +
+      position_value = (lists[new_position - 1].position +
                          lists[new_position].position) / 2
     end
     params[:list][:position] = position_value

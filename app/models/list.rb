@@ -3,5 +3,5 @@ class List < ActiveRecord::Base
 
   validates :name, :board, :position, :presence => true
   belongs_to :board, :inverse_of => :lists
-  has_many :cards, :inverse_of => :list
+  has_many :cards, :order => "position ASC", :inverse_of => :list
 end
