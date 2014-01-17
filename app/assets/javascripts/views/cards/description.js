@@ -1,23 +1,24 @@
-TrelloClone.Views.CardTitle = Backbone.View.extend({
+TrelloClone.Views.CardDescription = Backbone.View.extend({
 
-  events: {
-    "click h4#card-title": "addForm",
-    "submit form#card-title-form": "submit",
-    "click button#close-card-form": "render"
+  events:{
+    "click div#card-description": "addForm",
+    "submit form#card-description-form": "submit",
+    "click button#close-card-description-form": "render"
   },
 
-  template: JST["cards/title"],
+  template: JST["cards/description"],
 
-  formTemplate: JST["cards/title_form"],
+  formTemplate: JST["cards/description_form"],
 
   render: function(){
     this.$el.html(this.template({ card: this.model }));
     return this;
   },
 
-  addForm: function(){
+  addForm: function(event){
+    event.preventDefault();
     this.$el.html(this.formTemplate({ card: this.model }));
-    return this
+    return this;
   },
 
   submit: function(event){
@@ -30,4 +31,4 @@ TrelloClone.Views.CardTitle = Backbone.View.extend({
       }
     });
   }
-});
+})
