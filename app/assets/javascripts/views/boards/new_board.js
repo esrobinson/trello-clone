@@ -3,6 +3,7 @@ TrelloClone.Views.NewBoard = Backbone.View.extend({
   initialize: function(options){
     var view = this;
     this.$el.on('hidden.bs.modal', function(e){
+      view.collection.trigger("add"); //This is ugly, fix it later
       view.remove();
       Backbone.history.navigate("/", {trigger: false})
     });
@@ -27,9 +28,11 @@ TrelloClone.Views.NewBoard = Backbone.View.extend({
     $form = this.$('form#new-board-form');
     formData = $form.serializeJSON();
     this.collection.create(formData, {
+      silent: true,
       success: function(){
         view.$el.modal('hide')
       }
     });
+
   }
 })
