@@ -1,0 +1,5 @@
+<div class="row">
+  <% board.get('lists').each(function(list){ %>
+    <%= JST["lists/show"]({ list: list }) %>
+  <% }) %>
+</div>

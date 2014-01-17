@@ -2,6 +2,12 @@ class Api::ListsController < ApplicationController
 
   before_filter :require_login
 
+  def index
+    @board = Board.find_by_id(params[:board_id])
+    @lists = @board.lists
+    render :json => @lists, :include => :cards
+  end
+
   def create
     @list = List.new(params[:list])
     @board = Board.find_by_id(params[:board_id])

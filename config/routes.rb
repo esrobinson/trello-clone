@@ -27,7 +27,7 @@ TrelloClone::Application.routes.draw do
     resources :boards, :only => [:index, :show, :create, :update, :destroy] do
       resources :board_memberships, :only => [:create]
       resources :board_admins, :only => [:create]
-      resources :lists, :only => [:create]
+      resources :lists, :only => [:create, :index]
     end
     resources :lists, :only => [:show, :update, :destroy] do
       resources :cards, :only => [:create]
