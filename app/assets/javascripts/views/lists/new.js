@@ -1,10 +1,13 @@
 TrelloClone.Views.NewList = Backbone.View.extend({
 
   events: {
-    "submit #new-list-form": "submit"
+    "submit #new-list-form": "submit",
+    "click #close-list-form": "close",
   },
 
   template: JST["lists/new"],
+
+  closedTemplate: JST["lists/closed_form"],
 
   render: function(){
     this.$el.html(this.template());
@@ -20,7 +23,11 @@ TrelloClone.Views.NewList = Backbone.View.extend({
         view.remove();
         view.collection.board.trigger("change:lists");
       }
-    })
+    });
+  },
 
+  close: function(){
+    this.$el.html(this.closedTemplate());
+    return this;
   }
 });

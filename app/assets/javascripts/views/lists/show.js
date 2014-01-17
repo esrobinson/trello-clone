@@ -11,7 +11,7 @@ TrelloClone.Views.ListShow = Backbone.View.extend({
   template: JST["lists/show"],
 
   render: function(){
-    this.$el.addClass("col-xs-3 list-group")
+    this.$el.addClass("col-md-3 col-sm-6 list-group")
     this.$el.html(this.template( {list: this.model }));
     return this;
   },

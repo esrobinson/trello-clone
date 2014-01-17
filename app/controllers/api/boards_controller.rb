@@ -3,7 +3,8 @@ class Api::BoardsController < ApplicationController
   before_filter :require_login
 
   def index
-    render :json => current_user.member_boards, :include => :lists
+    @boards = current_user.member_boards.includes(:lists)
+    render :json => @boards, :include => :lists
   end
 
   def create

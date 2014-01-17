@@ -1,4 +1,6 @@
-<h4 class="list-group-item-heading"><%= list.get("name") %></h4>
+<div class="list-group-item">
+  <h4 class="list-group-item-heading"><%= list.get("name") %></h4>
+</div>
 <% list.get('cards').each(function(card){ %>
    <a href="#cards/<%= card.id %>" class="list-group-item">
      <%= card.get("name") %>
@@ -6,4 +8,4 @@
 <% }); %>
 <div class="list-group-item" id="new-card-wrapper">
   <a href="#" id="new-card-trigger">New Card</a>
-</div> 
+</div>

@@ -4,7 +4,7 @@ class Api::ListsController < ApplicationController
 
   def index
     @board = Board.find_by_id(params[:board_id])
-    @lists = @board.lists
+    @lists = @board.lists.includes(:cards)
     render :json => @lists, :include => :cards
   end
 
