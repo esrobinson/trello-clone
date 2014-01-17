@@ -1,6 +1,11 @@
 <div class="col-xs-2">
-  <h4><%= list.get("name") %></h4>
-  <div class="list-group">
 
+  <div class="list-group">
+  <h4 class="list-group-item-heading"><%= list.get("name") %></h4>
+  <% list.get('cards').each(function(card){ %>
+     <a href="#cards/<%= card.id %>" class="list-group-item">
+       <%= card.get("name") %>
+     </a>
+  <% }); %>
   </div>
 </div>
