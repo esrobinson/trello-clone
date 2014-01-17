@@ -17,7 +17,12 @@ TrelloClone.Views.ShowCard = Backbone.View.extend({
 
   render: function(){
     var title = new TrelloClone.Views.CardTitle({ model: this.model });
-    var description = new TrelloClone.Views.CardDescription({ model: this.model});
+    var description = new TrelloClone.Views.CardDescription({
+      model: this.model
+    });
+    // var checklists = new TrelloClone.Views.ShowChecklist({
+ //      collection: this.model.get('checklists')
+ //    });
 
     this.$el.addClass("modal");
     this.$el.html(this.template({ card: this.model }));
