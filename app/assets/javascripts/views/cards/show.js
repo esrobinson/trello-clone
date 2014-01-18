@@ -20,14 +20,15 @@ TrelloClone.Views.ShowCard = Backbone.View.extend({
     var description = new TrelloClone.Views.CardDescription({
       model: this.model
     });
-    // var checklists = new TrelloClone.Views.ShowChecklist({
- //      collection: this.model.get('checklists')
- //    });
+    var checklists = new TrelloClone.Views.ChecklistIndex({
+      collection: this.model.get('checklists')
+    });
 
     this.$el.addClass("modal");
     this.$el.html(this.template({ card: this.model }));
     this.$('div#card-title-wrapper').html(title.render().$el);
     this.$('div#card-description-wrapper').html(description.render().$el);
+    this.$('div#checklists-wrapper').html(checklists.render().$el);
     return this;
   },
 

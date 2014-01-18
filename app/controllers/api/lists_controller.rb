@@ -4,10 +4,10 @@ class Api::ListsController < ApplicationController
 
   def index
     @board = Board.find_by_id(params[:board_id])
-    @lists = @board.lists.includes(:cards => [:checklists, :comments])
-    render :json => @lists, :include => {
-      :cards => {:include => [:checklists, :comments]}
-    }
+    @lists = @board.lists.includes(
+        :cards => { :checklists =>  :items , :comments => {}}
+        )
+    render "api/lists/index"
   end
 
   def create

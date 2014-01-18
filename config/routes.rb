@@ -23,7 +23,7 @@ TrelloClone::Application.routes.draw do
   root :to => "static_pages#index"
   get "/backbone", :to => "static_pages#backbone"
 
-  namespace :api do
+  namespace :api, :default => :json do
     resources :boards, :only => [:index, :show, :create, :update, :destroy] do
       resources :board_memberships, :only => [:create]
       resources :board_admins, :only => [:create]
