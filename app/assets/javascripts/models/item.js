@@ -4,7 +4,7 @@ TrelloClone.Models.Item = Backbone.Model.extend({
     if(this.isNew()){
       return this.collection.url();
     } else {
-      return "/api/items" + this.id;
+      return "/api/items/" + this.id;
     }
   }
 
