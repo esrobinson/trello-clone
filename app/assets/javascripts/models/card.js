@@ -9,7 +9,8 @@ TrelloClone.Models.Card = Backbone.Model.extend({
 
   parse: function(data){
     data.checklists = new TrelloClone.Collections.Checklists(data.checklists, {
-      card: this
+      card: this,
+      parse: true
     });
     data.comments = new TrelloClone.Collections.Comments(data.comments, {
       card: this

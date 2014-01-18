@@ -5,5 +5,13 @@ TrelloClone.Models.Checklist = Backbone.Model.extend({
     } else {
       return "/api/checklists"
     }
+  },
+
+  parse: function (data) {
+    data.items = new TrelloClone.Collections.Items(data.items, {
+      checklist: this
+    });
+    return data;
   }
+
 })
