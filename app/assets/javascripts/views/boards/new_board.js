@@ -29,6 +29,7 @@ TrelloClone.Views.NewBoard = Backbone.View.extend({
     formData = $form.serializeJSON();
     this.collection.create(formData, {
       silent: true,
+      wait: true,
       success: function(){
         view.$el.modal('hide')
       }
