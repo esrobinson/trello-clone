@@ -1,5 +1,13 @@
 TrelloClone.Views.ShowChecklist = Backbone.View.extend({
 
+  initialize: function(options){
+    this.listenTo(this.model, "change:items", this.render);
+  },
+
+  events:{
+    "click a#new-item-trigger": "itemForm"
+  },
+
   template: JST["checklists/show"],
 
   render: function () {
@@ -11,6 +19,14 @@ TrelloClone.Views.ShowChecklist = Backbone.View.extend({
       view.$('#items-wrapper').append(show.render().$el);
     });
     return this;
+  },
+
+  itemForm: function(event){
+    event.preventDefault();
+    var form = new TrelloClone.Views.NewItem({
+      collection: this.model.get('items')
+    });
+    this.$('#new-item-wrapper').html(form.render().$el)
   }
 
 });
