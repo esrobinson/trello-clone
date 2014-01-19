@@ -6,7 +6,7 @@ class Api::ItemsController < ApplicationController
     @item.checklist = @checklist
     @item.position = @checklist.items.length
     if @item.save
-      render :json => @checklist, :include => :items
+      render :json => @item
     else
       render :json => @item.errors.full_messages
     end
@@ -14,9 +14,8 @@ class Api::ItemsController < ApplicationController
 
   def update
     @item = Item.find_by_id(params[:id])
-    @item.checked = !@item.checked
-    @item.save
-    render :json => @item.checklist, :include => :items
+    @item.update_attributes(params[:item])
+    render :json => @item
   end
 
   def destroy

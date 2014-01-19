@@ -15,8 +15,8 @@ TrelloClone.Views.NewItem = Backbone.View.extend({
     var view = this
     event.preventDefault();
     var formData = $(event.currentTarget).serializeJSON();
-    console.log(formData)
     this.collection.create(formData, {
+      wait: true,
       success: function(){
         view.collection.checklist.trigger("change:items")
       }
