@@ -5,7 +5,8 @@ TrelloClone.Views.ShowChecklist = Backbone.View.extend({
   },
 
   events:{
-    "click a#new-item-trigger": "itemForm"
+    "click a#new-item-trigger": "itemForm",
+		"click button#close-item-form": "render"
   },
 
   template: JST["checklists/show"],

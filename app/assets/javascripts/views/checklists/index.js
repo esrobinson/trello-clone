@@ -7,7 +7,8 @@ TrelloClone.Views.ChecklistIndex = Backbone.View.extend({
   },
 
   events: {
-    "click a#new-checklist-trigger": "checklistForm"
+    "click a#new-checklist-trigger": "checklistForm",
+		"click button#close-checklist-form" : "render"
   },
 
   template: JST["checklists/index"],
