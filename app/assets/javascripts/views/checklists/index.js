@@ -28,6 +28,7 @@ TrelloClone.Views.ChecklistIndex = Backbone.View.extend({
       collection: this.collection
     });
     this.$("div#new-checklist-wrapper").html(form.render().$el);
+		this.$("#checklist-text").focus();
     return this;
   }
 

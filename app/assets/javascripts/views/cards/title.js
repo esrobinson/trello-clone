@@ -10,22 +10,23 @@ TrelloClone.Views.CardTitle = Backbone.View.extend({
 
   formTemplate: JST["cards/title_form"],
 
-  render: function(){
+  render: function render(){
     this.$el.html(this.template({ card: this.model }));
     return this;
   },
 
-  addForm: function(){
+  addForm: function addForm(){
     this.$el.html(this.formTemplate({ card: this.model }));
+		this.$("#title-text").focus();
     return this
   },
 
-  submit: function(event){
+  submit: function submit(event){
     var view = this;
     event.preventDefault();
     formData = $(event.currentTarget).serializeJSON();
     this.model.save(formData, {
-      success: function(){
+      success: function submitSuccess(){
         view.render();
       }
     });

@@ -18,6 +18,7 @@ TrelloClone.Views.CardDescription = Backbone.View.extend({
   addForm: function(event){
     event.preventDefault();
     this.$el.html(this.formTemplate({ card: this.model }));
+		this.$("#description-form").focus();
     return this;
   },
 
