@@ -19,8 +19,8 @@ TrelloClone.Views.NewComment = Backbone.View.extend({
 
 	submit: function submit(event){
 		event.preventDefault();
-		console.log("ping");
 		formData = $(event.currentTarget).serializeJSON();
+		formData.author = TrelloClone.user.username
 		this.collection.create(formData, {
 			wait: true
 		});
