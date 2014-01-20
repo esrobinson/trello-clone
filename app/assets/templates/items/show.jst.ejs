@@ -1,11 +1,13 @@
-<form class="checkbox">
-  <% if(item.get('checked')){ %>
-    <label class="checked">
-      <input type="checkbox" class="toggle-item-checked" name="item[checked]" checked >
-      <%= item.get('body') %>
-  <% } else { %>
-    <label>
-      <input type="checkbox" class="toggle-item-checked" name="item[checked]"><%= item.get('body') %>
-    <% } %>
-  </label>
-</form>
+<li class="list-group-item">
+	<form class="checkbox">
+	  <% if(item.get('checked')){ %>
+	    <label class="checked">
+	      <input type="checkbox" class="toggle-item-checked" name="item[checked]" checked >
+	      <%= item.get('body') %>
+	  <% } else { %>
+	    <label>
+	      <input type="checkbox" class="toggle-item-checked" name="item[checked]"><%= item.get('body') %>
+	    <% } %>
+	  </label>
+	</form>
+</li>

@@ -15,7 +15,7 @@ TrelloClone.Views.ShowCard = Backbone.View.extend({
 
   template: JST["cards/show"],
 
-  render: function(){
+  render: function render(){
     var title = new TrelloClone.Views.CardTitle({ model: this.model });
     var description = new TrelloClone.Views.CardDescription({
       model: this.model
@@ -23,23 +23,27 @@ TrelloClone.Views.ShowCard = Backbone.View.extend({
     var checklists = new TrelloClone.Views.ChecklistIndex({
       collection: this.model.get('checklists')
     });
+		var comments = new TrelloClone.Views.CommentsIndex({
+			collection: this.model.get('comments')
+		});
 
     this.$el.addClass("modal");
     this.$el.html(this.template({ card: this.model }));
     this.$('div#card-title-wrapper').html(title.render().$el);
     this.$('div#card-description-wrapper').html(description.render().$el);
     this.$('div#checklists-wrapper').html(checklists.render().$el);
+		this.$('div#comments-wrapper').html(comments.render().$el);
     return this;
   },
 
-  submit: function(event){
-    var view = this
-    event.preventDefault()
+  submit: function submit(event){
+    var view = this;
+    event.preventDefault();
     $form = this.$('form#new-board-form');
     formData = $form.serializeJSON();
     this.collection.create(formData, {
-      success: function(){
-        view.$el.modal('hide')
+      success: function hideModal(){
+        view.$el.modal('hide');
       }
     });
   }

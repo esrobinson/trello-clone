@@ -5,7 +5,7 @@ TrelloClone.Collections.Comments = Backbone.Collection.extend({
 
   url: function(){
     if(this.card){
-      return "/api/cards/" + card.id + "/comments"
+      return "/api/cards/" + this.card.id + "/comments"
     } else {
       return "/api/comments"
     }
