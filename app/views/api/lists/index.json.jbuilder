@@ -1,1 +1,1 @@
-json.array! @lists, :partial => 'lists/list', :as => :list
+json.array! @lists, :partial => 'api/lists/list', :as => :list

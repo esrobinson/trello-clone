@@ -39,6 +39,7 @@ TrelloClone::Application.routes.draw do
     resources :checklists, :only => [:show, :update, :destoy] do
       resources :items, :only => [:create]
     end
+    resources :users, :only => [:index]
 
     resources :items, :only => [:update, :destroy]
   end

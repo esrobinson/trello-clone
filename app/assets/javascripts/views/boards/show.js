@@ -12,15 +12,19 @@ TrelloClone.Views.BoardShow = Backbone.View.extend({
 
   render: function render(){
     var view = this;
+		var lists = this.model.get('lists');
+		var sidebar = new TrelloClone.Views.BoardSidebar({ model: this.model });
+
 		this.$el.html(this.template());
-    var lists = this.model.get('lists');
-    lists.each(function appendList(list){
+		lists.each(function appendList(list){
       listView = new TrelloClone.Views.ListShow({model: list});
       view.$("#lists-list").append(listView.render().$el);
       if(lists.indexOf(list) % 4 == 3){
         view.$("#lists-list").append($('<div>').addClass("clearfix"));
       }
     });
+		this.$("#board-sidebar").html(sidebar.render().$el);
+
 		this.installSortableLists();
     return this;
   },
