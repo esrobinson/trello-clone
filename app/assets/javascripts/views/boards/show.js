@@ -28,6 +28,7 @@ TrelloClone.Views.BoardShow = Backbone.View.extend({
 	installSortableLists: function installSortable(){
 		var view = this;
 		this.$("#lists-list").sortable({
+			distance: 20,
 			update: view.updateListPosition.bind(view)
 		});
 	},

@@ -12,6 +12,7 @@ TrelloClone.Views.ListShow = Backbone.View.extend({
   template: JST["lists/show"],
 
   render: function(){
+		$("#lists-list").sortable("enable");
     this.$el.addClass("col-md-3 col-sm-6 list-group list-element")
 		this.$el.data('id', this.model.id);
     this.$el.html(this.template( {list: this.model }));
@@ -23,8 +24,8 @@ TrelloClone.Views.ListShow = Backbone.View.extend({
 		var view = this;
 		var oldList, newList, item;
 		this.$(".cards-list").sortable({
+			distance: 20,
 			connectWith: ".cards-list",
-
 			update: function(event, ui){
 				view.updateCardPosition(event, ui);
 			}
@@ -70,6 +71,7 @@ TrelloClone.Views.ListShow = Backbone.View.extend({
     var card = this.model.get('cards').get(cardId);
     var show = new TrelloClone.Views.ShowCard({ model: card });
     this.$el.append(show.render().$el);
+		$("#lists-list").sortable("disable");
     show.$el.modal()
   }
 

@@ -14,7 +14,6 @@ TrelloClone.Views.ShowItem = Backbone.View.extend({
   toggleCheck: function (event) {
     this.$('label').toggleClass('checked');
     this.model.set('checked', !this.model.get('checked'));
-    console.log(this.model);
     this.model.save();
   }
 
