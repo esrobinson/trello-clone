@@ -8,6 +8,9 @@ TrelloClone.Models.Card = Backbone.Model.extend({
   },
 
   parse: function parse(data){
+		data.position = this.collection.nextPosition
+		this.collection.nextPosition++;
+
     data.checklists = new TrelloClone.Collections.Checklists(data.checklists, {
       card: this,
       parse: true
@@ -20,7 +23,6 @@ TrelloClone.Models.Card = Backbone.Model.extend({
 
   toJSON: function toJSON(){
     data = _.clone(this.attributes);
-    data.card.position = this.collection.indexOf(this);
     delete data.checklists;
     delete data.comments;
     return data;

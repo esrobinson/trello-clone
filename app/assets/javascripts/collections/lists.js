@@ -1,12 +1,17 @@
 TrelloClone.Collections.Lists = Backbone.Collection.extend({
 
-  initialize: function(data, options){
+  initialize: function initialize(data, options){
     this.board = options.board;
+		this.nextPosition = 0;
   },
 
   model: TrelloClone.Models.List,
 
-  url: function(){
+	comparator: function comparator(model){
+		return model.get('position');
+	},
+
+  url: function url(){
     if(this.board){
       return "/api/boards/" + this.board.id + "/lists";
     } else {
@@ -14,4 +19,4 @@ TrelloClone.Collections.Lists = Backbone.Collection.extend({
     }
   },
 
-})
+});

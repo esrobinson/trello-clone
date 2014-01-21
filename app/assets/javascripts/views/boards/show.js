@@ -1,7 +1,7 @@
 TrelloClone.Views.BoardShow = Backbone.View.extend({
 
-  initialize: function(options){
-    this.listenTo(this.model, "change:lists", this.render)
+  initialize: function initialize(options){
+    this.listenTo(this.model, "change:lists", this.render);
   },
 
   events: {
@@ -10,27 +10,44 @@ TrelloClone.Views.BoardShow = Backbone.View.extend({
 
   template: JST["boards/show"],
 
-  render: function(){
+  render: function render(){
     var view = this;
-    this.$el.addClass('row');
-    this.$el.html('');
+		this.$el.html(this.template());
     var lists = this.model.get('lists');
-    lists.each(function(list){
+    lists.each(function appendList(list){
       listView = new TrelloClone.Views.ListShow({model: list});
-      view.$el.append(listView.render().$el);
+      view.$("#lists-list").append(listView.render().$el);
       if(lists.indexOf(list) % 4 == 3){
-        view.$el.append($('<div>').addClass("clearfix"))
+        view.$("#lists-list").append($('<div>').addClass("clearfix"));
       }
     });
-    this.$el.append(this.template());
+		this.installSortableLists();
     return this;
   },
 
-  listForm: function(event){
+	installSortableLists: function installSortable(){
+		var view = this;
+		this.$("#lists-list").sortable({
+			update: view.updateListPosition.bind(view)
+		});
+	},
+
+	updateListPosition: function updatePosition(event, ui){
+		var lists = this.model.get('lists');
+		this.$(event.target).children().each(function(index, element){
+			list = lists.get($(element).data('id'));
+			if(list.get('position') !== index){
+				list.set('position', index);
+				list.save();
+			}
+		})
+	},
+
+  listForm: function listForm(event){
     event.preventDefault();
     $wrapper = $(this.$("div#new-list-wrapper"));
-    lists = this.model.get('lists')
-    form = new TrelloClone.Views.NewList({ collection: lists})
+    lists = this.model.get('lists');
+    form = new TrelloClone.Views.NewList({ collection: lists});
     $wrapper.html(form.render().$el);
   }
 

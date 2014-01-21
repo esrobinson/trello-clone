@@ -25,12 +25,14 @@ class Api::CardsController < ApplicationController
 
   def update
     @card = Card.find_by_id(params[:id])
-    cards = @card.list.cards
+    cards = List.find_by_id(params[:list_id]).cards
     new_position = params[:card][:position].to_i
     if new_position == 0
       position_value = cards[0].position - 1
     elsif new_position == cards.length - 1
       position_value = (cards.length + cards[new_position].position) / 2
+    elsif new_position == cards.length
+      position_value = cards[new_position - 1].position + 1
     else
       position_value = (cards[new_position - 1].position +
                          cards[new_position].position) / 2

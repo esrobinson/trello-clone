@@ -1,11 +1,13 @@
 <div class="list-group-item">
   <h4 class="list-group-item-heading"><%= list.get("name") %></h4>
-</div>
-<% list.get('cards').each(function(card){ %>
-   <a href="#" class="list-group-item show-card" data-id="<%= card.id %>">
-     <%= card.get("name") %>
-   </a>
-<% }); %>
-<div class="list-group-item" id="new-card-wrapper">
-  <a href="#" id="new-card-trigger">New Card</a>
+	<div class="cards-list" data-id="<%= list.id %>">
+		<% list.get('cards').each(function(card){ %>
+		   <a href="#" class="list-group-item show-card" data-id="<%= card.id %>">
+		     <%= card.get("name") %>
+		   </a>
+		<% }); %>
+	</div>
+	<div class="list-group-item" id="new-card-wrapper">
+	  <a href="#" id="new-card-trigger">New Card</a>
+	</div>
 </div>
