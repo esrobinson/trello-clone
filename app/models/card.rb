@@ -4,5 +4,5 @@ class Card < ActiveRecord::Base
 
   belongs_to :list, :inverse_of => :cards
   has_many :comments, :inverse_of => :card
-  has_many :checklists, :inverse_of => :card
+  has_many :checklists, :order => "position ASC", :inverse_of => :card
 end

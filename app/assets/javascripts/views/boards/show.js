@@ -35,7 +35,9 @@ TrelloClone.Views.BoardShow = Backbone.View.extend({
 
 	updateListPosition: function updatePosition(event, ui){
 		var lists = this.model.get('lists');
-		this.$(event.target).children().each(function(index, element){
+		this.$(event.target)
+				.children()
+				.each(function updateEachList(index, element){
 			list = lists.get($(element).data('id'));
 			if(list.get('position') !== index){
 				list.set('position', index);

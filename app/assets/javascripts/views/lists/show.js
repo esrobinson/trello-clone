@@ -48,7 +48,9 @@ TrelloClone.Views.ListShow = Backbone.View.extend({
 			});
 		}
 
-		this.$(".cards-list").children().each(function(index, element){
+		this.$(".cards-list")
+				.children()
+				.each(function updateEachCard(index, element){
 			card = cards.get($(element).data('id'));
 			if(card.get('position') !== index){
 				card.set('position', index);
@@ -57,7 +59,7 @@ TrelloClone.Views.ListShow = Backbone.View.extend({
 		})
 	},
 
-	cardForm: function(event){
+	cardForm: function cardForm(event){
     event.preventDefault();
     $wrapper = $(this.$("div#new-card-wrapper"));
     cards = this.model.get('cards')
@@ -65,7 +67,7 @@ TrelloClone.Views.ListShow = Backbone.View.extend({
     $wrapper.html(form.render().$el);
   },
 
-  showCard: function(event){
+  showCard: function showCard(event){
     event.preventDefault();
     var cardId = $(event.currentTarget).data('id');
     var card = this.model.get('cards').get(cardId);
