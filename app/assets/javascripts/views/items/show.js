@@ -8,6 +8,7 @@ TrelloClone.Views.ShowItem = Backbone.View.extend({
 
   render: function () {
     this.$el.html(this.template({ item: this.model }));
+		this.$el.data('id', this.model.id);
     return this;
   },
 

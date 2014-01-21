@@ -25,11 +25,33 @@ TrelloClone.Views.ShowChecklist = Backbone.View.extend({
   },
 
 	installSortableItems: function installSortableItems(){
-		this.$('#items-wrapper').disableSelection();
-		this.$('#items-wrapper').sortable({
+		var view = this;
+
+		this.$("#items-wrapper").disableSelection();
+		this.$("#items-wrapper").sortable({
 			axis: "y",
-			distance: 20
+			distance: 20,
+			update: view.updateItemPosition.bind(view)
 		});
+	},
+
+	updateItemPosition: function updateItemPosition(event, ui){
+		var newPosition;
+		var items = this.model.get('items');
+		var item = items.get(ui.item.data('id'));
+		var index = ui.item.index();
+		if(index === 0) {
+			 newPosition = items.at(0).get('position') - 1;
+		} else if (index === items.length - 1) {
+			newPosition = (items.at(index).get('position')
+											+ items.length) / 2;
+		} else {
+			newPosition = (items.at(index - 1).get('position')
+											+ items.at(index).get('position')) / 2
+		}
+		item.set('position', newPosition);
+		items.sort();
+		item.save();
 	},
 
   itemForm: function itemForm(event){
