@@ -73,7 +73,7 @@ TrelloClone.Views.ListShow = Backbone.View.extend({
     var card = this.model.get('cards').get(cardId);
     var show = new TrelloClone.Views.ShowCard({ model: card });
     this.$el.append(show.render().$el);
-		$("#lists-list").sortable("disable");
+		this.$("#lists-list").sortable("disable");
     show.$el.modal()
   },
 

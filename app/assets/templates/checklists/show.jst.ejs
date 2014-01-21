@@ -1,6 +1,22 @@
-<h5><%= checklist.get('name') %></h5>
+<div id="checklist-header">
+	<h5 class="col-xs-11"><%= checklist.get('name') %></h5>
+	<div class="dropdown">
+		<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu pull-right" role="menu">
+			<li role="presentation">
+				<a href="#" class="new-item-trigger">Add an item</a>
+			</li>
+				<hr>
+			<li class="text-center">
+				<button class="btn btn-danger remove-checklist">Remove Checklist</button>
+			</li>
+		</ul>
+	</div>
+</div>
 <div id="progress-bar-wrapper"></div>
 <ul class="list-group" id="items-wrapper"></ul>
 <div id="new-item-wrapper">
-  <a href="#" id="new-item-trigger">New Item</a>
+  <a href="#" class="new-item-trigger">New Item</a>
 </div>

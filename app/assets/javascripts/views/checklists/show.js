@@ -5,8 +5,9 @@ TrelloClone.Views.ShowChecklist = Backbone.View.extend({
   },
 
   events:{
-    "click a#new-item-trigger": "itemForm",
-		"click button#close-item-form": "render"
+    "click a.new-item-trigger": "itemForm",
+		"click button#close-item-form": "render",
+		"click button.remove-checklist": "removeChecklist"
   },
 
   template: JST["checklists/show"],
@@ -62,6 +63,15 @@ TrelloClone.Views.ShowChecklist = Backbone.View.extend({
     this.$('#new-item-wrapper').html(form.render().$el);
 		this.$('#item-text').focus();
 		return this;
-  }
+  },
+
+	removeChecklist: function removeChecklist(){
+		var card = this.model.collection.card;
+		this.model.destroy({
+			success: function removeChecklistSuccess(){
+
+			}
+		});
+	}
 
 });
