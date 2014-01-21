@@ -50,6 +50,7 @@ TrelloClone.Views.ChecklistIndex = Backbone.View.extend({
 											+ this.collection.at(index).get('position')) / 2
 		}
 		checklist.set('position', newPosition);
+		this.collection.sort();
 		checklist.save();
 	},
 

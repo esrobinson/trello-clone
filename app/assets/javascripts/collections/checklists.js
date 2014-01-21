@@ -11,7 +11,7 @@ TrelloClone.Collections.Checklists = Backbone.Collection.extend({
     }
   },
 
-	comperator: function comparator(model){
+	comparator: function comparator(model){
 		return model.get('position');
 	},
 
