@@ -30,12 +30,9 @@ div.board-summary {
 
 .btn.dropdown-toggle {
 	background-color: transparent;
-}
-
-.btn.list-dropdown {
 	color: transparent;
 }
 
-.btn.dropdown-toggle:hover{
+ div:hover > .btn.dropdown-toggle{
 	color: black;
 }

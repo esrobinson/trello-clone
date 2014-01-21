@@ -24,16 +24,20 @@ class Api::ListsController < ApplicationController
   end
 
   def show
-    @list = List.find_by_id(params[:id]);
+    @list = List.where(:id => params[:id]).includes(
+        :cards => { :checklists => :items, :comments => {} }
+        ).first
     if @list
-      render :json => @list, :include => :cards
+      render "api/lists/show"
     else
       render :json => "404 Not Found", :status => 404
     end
   end
 
   def update
-    @list = List.find_by_id(params[:id])
+    @list = List.where(:id => params[:id]).includes(
+        :cards => { :checklists => :items, :comments => {} }
+        ).first
     lists = @list.board.lists
     new_position = params[:list][:position].to_i
     if new_position == 0
@@ -46,7 +50,7 @@ class Api::ListsController < ApplicationController
     end
     params[:list][:position] = position_value
     if @list.update_attributes(params[:list])
-      render :json => @list, :include => :cards
+      render "api/lists/show"
     else
       render :json => @list.errors.full_messages
     end
