@@ -16,6 +16,7 @@
 //= require bootstrap
 //= require underscore
 //= require backbone
+//= require gravtastic
 //= require jquery.serializeJSON
 //= require trello_clone
 //= require_tree ../templates

@@ -51,6 +51,7 @@ GEM
     ejs (1.1.1)
     erubis (2.7.0)
     execjs (2.0.2)
+    gravtastic (3.2.6)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (2.0.2)
@@ -120,6 +121,7 @@ DEPENDENCIES
   backbone-on-rails
   bcrypt-ruby
   coffee-rails (~> 3.2.1)
+  gravtastic
   jbuilder
   jquery-rails
   pg

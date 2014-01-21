@@ -24,6 +24,8 @@ gem 'backbone-on-rails'
 
 gem 'jquery-rails'
 
+gem 'gravtastic'
+
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', :require => 'bcrypt'
 
