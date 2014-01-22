@@ -6,9 +6,12 @@ window.TrelloClone = {
   initialize: function() {
     $rootEl = $('#content');
     TrelloClone.boards = new TrelloClone.Collections.Boards;
-		TrelloClone.user = JSON.parse($("#current_user_json").html())
+		TrelloClone.users = new TrelloClone.Collections.Users(
+			JSON.parse($("#all_users_json").html())
+		);
+		TrelloClone.user = TrelloClone.users.get($("#current_user_id").html());
     TrelloClone.boards.fetch({
-      success: function(){
+      success: function boardsFetchSuccess(){
         TrelloClone.router = new TrelloClone.Routers.Router({
           $rootEl: $rootEl
         });
