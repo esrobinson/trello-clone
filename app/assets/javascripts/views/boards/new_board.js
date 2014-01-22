@@ -1,6 +1,6 @@
 TrelloClone.Views.NewBoard = Backbone.View.extend({
 
-  initialize: function(options){
+  initialize: function initialize(options){
     var view = this;
     this.$el.on('hidden.bs.modal', function(e){
       view.collection.trigger("add"); //This is ugly, fix it later
@@ -15,14 +15,15 @@ TrelloClone.Views.NewBoard = Backbone.View.extend({
   },
 
   template: JST["boards/new"],
+	linkTemplate: JST["boards/link"],
 
-  render: function(){
+  render: function render(){
     this.$el.addClass("modal");
     this.$el.html(this.template());
     return this;
   },
 
-  submit: function(event){
+  submit: function submit(event){
     var view = this
     event.preventDefault()
     $form = this.$('form#new-board-form');
@@ -30,8 +31,9 @@ TrelloClone.Views.NewBoard = Backbone.View.extend({
     this.collection.create(formData, {
       silent: true,
       wait: true,
-      success: function(){
-        view.$el.modal('hide')
+      success: function(data){
+				$("#nav-board-list").append( view.linkTemplate({ data: data }));
+        view.$el.modal('hide');
       }
     });
 
