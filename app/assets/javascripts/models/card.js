@@ -29,6 +29,6 @@ TrelloClone.Models.Card = Backbone.Model.extend({
   },
 
 	validate: function validate(attrs, options){
-		if(!attrs.card.name) return "Name can't be blank";
+		if(!attrs.name && !attrs.card.name) return "Name can't be blank";
 	}
 });
