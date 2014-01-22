@@ -39,6 +39,21 @@ TrelloClone.Views.AddMember = Backbone.View.extend({
 				template: typeaheadTemplate
 			}
 		]);
+	},
+
+	submit: function submit(event){
+		var view = this;
+
+		event.preventDefault();
+		username = this.$("#new-member-input").val();
+		$.ajax({
+			type: "POST",
+			url: "/api/boards/" + this.model.id + "/board_memberships",
+			data: { username: username },
+			success: function clearMemberField(){
+				view.$("#new-member-input").val('');
+			}
+		});
 	}
 
 });

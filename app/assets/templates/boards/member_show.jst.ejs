@@ -1,1 +1,1 @@
-<img src="<%= Gravtastic(member.get('email')) %>" height="30" data-toggle="tooltip" title="<%= member.get('username') %>">
+<img src="<%= Gravtastic(member.get('email'), {default: 'identicon', size: 30}) %>" data-toggle="tooltip" title="<%= member.get('username') %>" class="member-tile">

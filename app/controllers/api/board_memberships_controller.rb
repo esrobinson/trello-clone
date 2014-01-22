@@ -3,7 +3,9 @@ class Api::BoardMembershipsController < ApplicationController
   def create
     @board = Board.find_by_id(params[:board_id])
     if @board && is_admin?(@board, current_user)
-      @board_membership = BoardMembership.new(params[:board_membership])
+      user = User.find_by_username(params[:username])
+      @board_membership = BoardMembership.new()
+      @board_membership.user = user
       @board_membership.board_id = params[:board_id]
       if @board_membership.save
         render :json => @board_membership
