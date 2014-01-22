@@ -12,10 +12,16 @@ TrelloClone.Views.DateForm = Backbone.View.extend({
 	},
 
 	submit: function submit(event){
+		var view = this;
+
 		event.preventDefault();
 		formData = $(event.target).serializeJSON();
 		this.model.set('due_date', formData.due_date);
-		this.model.save();
+		this.model.save({},{
+			success: function dueDateSucces(){
+				view.remove();
+			}
+		});
 	}
 
 });
