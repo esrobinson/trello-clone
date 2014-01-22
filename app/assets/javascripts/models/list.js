@@ -8,8 +8,6 @@ TrelloClone.Models.List = Backbone.Model.extend({
   },
 
   parse: function parse(data){
-		data.position = this.collection.nextPosition
-		this.collection.nextPosition++;
     data.cards = new TrelloClone.Collections.Cards(data.cards, {
       list: this,
       parse: true

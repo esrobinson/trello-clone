@@ -38,17 +38,6 @@ class Api::ListsController < ApplicationController
     @list = List.where(:id => params[:id]).includes(
         :cards => { :checklists => :items, :comments => {} }
         ).first
-    lists = @list.board.lists
-    new_position = params[:list][:position].to_i
-    if new_position == 0
-      position_value = lists[0].position - 1
-    elsif new_position == lists.length - 1
-      position_value = (lists.length + lists[new_position].position) / 2
-    else
-      position_value = (lists[new_position - 1].position +
-                         lists[new_position].position) / 2
-    end
-    params[:list][:position] = position_value
     if @list.update_attributes(params[:list])
       render "api/lists/show"
     else

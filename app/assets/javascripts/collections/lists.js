@@ -2,7 +2,6 @@ TrelloClone.Collections.Lists = Backbone.Collection.extend({
 
   initialize: function initialize(data, options){
     this.board = options.board;
-		this.nextPosition = 0;
   },
 
   model: TrelloClone.Models.List,

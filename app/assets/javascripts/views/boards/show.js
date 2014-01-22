@@ -39,16 +39,23 @@ TrelloClone.Views.BoardShow = Backbone.View.extend({
 	},
 
 	updateListPosition: function updatePosition(event, ui){
+		var newPosition;
 		var lists = this.model.get('lists');
-		this.$(event.target)
-				.children()
-				.each(function updateEachList(index, element){
-			list = lists.get($(element).data('id'));
-			if(list.get('position') !== index){
-				list.set('position', index);
-				list.save();
-			}
-		})
+		var list = lists.get(ui.item.data('id'));
+		var index = ui.item.index();
+
+		if(index === 0) {
+			 newPosition = lists.at(0).get('position') - 1;
+		} else if (index === lists.length - 1) {
+			newPosition = (lists.at(index).get('position')
+											+ lists.length) / 2;
+		} else {
+			newPosition = (lists.at(index - 1).get('position')
+											+ lists.at(index).get('position')) / 2
+		}
+		list.set('position', newPosition);
+		lists.sort();
+		list.save();
 	},
 
   listForm: function listForm(event){
