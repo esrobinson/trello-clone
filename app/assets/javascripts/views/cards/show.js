@@ -17,6 +17,7 @@ TrelloClone.Views.ShowCard = Backbone.View.extend({
 
   render: function render(){
     var title = new TrelloClone.Views.CardTitle({ model: this.model });
+		var dueDate = new TrelloClone.Views.DueDate({ model: this.model });
     var description = new TrelloClone.Views.CardDescription({
       model: this.model
     });
@@ -30,6 +31,7 @@ TrelloClone.Views.ShowCard = Backbone.View.extend({
     this.$el.addClass("modal");
     this.$el.html(this.template({ card: this.model }));
     this.$('div#card-title-wrapper').html(title.render().$el);
+		this.$('div#due-date-wrapper').html(dueDate.render().$el);
     this.$('div#card-description-wrapper').html(description.render().$el);
     this.$('div#checklists-wrapper').html(checklists.render().$el);
 		this.$('div#comments-wrapper').html(comments.render().$el);
