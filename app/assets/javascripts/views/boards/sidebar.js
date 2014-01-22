@@ -1,5 +1,8 @@
 TrelloClone.Views.BoardSidebar = Backbone.View.extend({
 
+	initialize: function initialize(){
+		this.listenTo(this.model, "change:members", this.render);
+	},
 
 	template: JST["boards/sidebar"],
 

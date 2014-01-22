@@ -50,8 +50,10 @@ TrelloClone.Views.AddMember = Backbone.View.extend({
 			type: "POST",
 			url: "/api/boards/" + this.model.id + "/board_memberships",
 			data: { username: username },
-			success: function clearMemberField(){
-				view.$("#new-member-input").val('');
+			success: function addMemberToCollection(data){
+				user = TrelloClone.users.get(data.user_id);
+				view.model.get('members').add(user);
+				view.model.trigger("change:members");
 			}
 		});
 	}
