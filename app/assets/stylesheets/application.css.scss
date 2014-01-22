@@ -41,3 +41,8 @@ div.board-summary {
 #member-wrapper{
   display: inline-flex;
 }
+
+.ui-sortable-helper{
+	transform: rotate(15deg);
+	-webkit-transform: rotate(15deg);
+}
