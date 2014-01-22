@@ -1,5 +1,9 @@
 TrelloClone.Views.DueDate = Backbone.View.extend({
 
+	initialize: function initialize(){
+		this.listenTo(this.model, "change:due_date", this.render);
+	},
+
 	events: {
 		"click #due-date": "dateForm"
 	},
