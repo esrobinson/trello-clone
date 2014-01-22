@@ -1,6 +1,7 @@
 TrelloClone.Models.Board = Backbone.Model.extend({
-  parse: function(data){
+  parse: function parse(data){
     data.lists = new TrelloClone.Collections.Lists(data.lists, {board: this});
-    return data
+		data.members = new TrelloClone.Collections.Users(data.members);
+    return data;
   }
 })
