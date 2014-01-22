@@ -7,7 +7,8 @@ TrelloClone.Views.AddMember = Backbone.View.extend({
 		this.$("#new-member-input").typeahead([
 			{
 				name: 'users',
-				local: TrelloClone.users.pluck('username')
+				local: TrelloClone.users.toJSON(),
+				valueKey: "username"
 			}
 			]);
 			$(".tt-hint").addClass('form-control');
