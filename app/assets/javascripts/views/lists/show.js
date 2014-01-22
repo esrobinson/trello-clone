@@ -13,9 +13,12 @@ TrelloClone.Views.ListShow = Backbone.View.extend({
   template: JST["lists/show"],
 
   render: function(){
-    this.$el.addClass("col-md-3 col-sm-6 list-group list-element")
+    var nameView = new TrelloClone.Views.ListName({ model: this.model });
+
+		this.$el.addClass("col-md-3 col-sm-6 list-group list-element")
 		this.$el.data('id', this.model.id);
     this.$el.html(this.template( {list: this.model }));
+		this.$("#list-name-wrapper").html(nameView.render().$el);
 		this.installSortableCards();
 	  $("#lists-list").sortable("enable");
     return this;
