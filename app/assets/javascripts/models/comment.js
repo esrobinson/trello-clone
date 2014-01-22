@@ -11,6 +11,10 @@ TrelloClone.Models.Comment = Backbone.Model.extend({
 		data = _.clone(this.attributes);
 		delete data.author;
 		return data;
+	},
+
+	validate: function validate(attrs, options){
+		if(!attrs.body) return "Body can't be blank.";
 	}
 
 });

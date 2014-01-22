@@ -12,6 +12,10 @@ TrelloClone.Models.Checklist = Backbone.Model.extend({
       checklist: this
     });
     return data;
-  }
+  },
+
+	validate: function validate(attrs, options){
+		if(!attrs.name) return "Name can't be blank";
+	}
 
 })

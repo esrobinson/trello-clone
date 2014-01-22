@@ -21,5 +21,9 @@ TrelloClone.Models.List = Backbone.Model.extend({
     data = _.clone(this.attributes);
     delete data.cards;
     return data;
-  }
+  },
+
+	validate: function validate(attrs, options){
+		if(!attrs.list.name) return "Name can't be blank.";
+	}
 });
