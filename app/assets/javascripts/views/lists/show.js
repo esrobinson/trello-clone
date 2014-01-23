@@ -69,11 +69,8 @@ TrelloClone.Views.ListShow = Backbone.View.extend({
 
 			if(index === 0) {
 				 newPosition = cards.at(0).get('position') - 1;
-			} else if (index === cards.length - 1) {
-				newPosition = (cards.at(index).get('position')
-												+ cards.length) / 2;
-			} else if (index === cards.length){
-				newPosition = cards.length;
+			} else if (index >= cards.length - 1) {
+				newPosition = cards.last().get('position') + 1
 			} else {
 				newPosition = (cards.at(index - 1).get('position')
 												+ cards.at(index).get('position')) / 2
