@@ -21,7 +21,6 @@ TrelloClone::Application.routes.draw do
   resource :session, :only => [:new, :create, :destroy]
 
   root :to => "static_pages#index"
-  get "/backbone", :to => "static_pages#backbone"
 
   namespace :api, :default => :json do
     resources :boards, :only => [:index, :show, :create, :update, :destroy] do

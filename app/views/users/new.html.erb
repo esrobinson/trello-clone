@@ -1,4 +1,23 @@
-<% action_url = users_url %>
-<% submit_verb = "Create Account"%>
-<h2>Create Account</h2>
-<%= render "form", {:action_url => users_url, :submit_verb => submit_verb} %>
+<div class="col-xs-4 col-xs-offset-4">
+	<h3>Sign In</h3>
+	<form action="<%= users_url %>" method="POST">
+	  <input type="hidden" name="authenticity_token"
+	           value="<%= form_authenticity_token %>">
+		<div class="form-group">
+		  <label for="user_email">Email</label>
+		  <input type="text" class="form-control" id="user_email"
+				name="user[email]" placeholder="Email">
+		</div>
+		<div class="form-group">
+		  <label for="user_username">Username</label>
+		  <input type="text" class="form-control" id="user_username"
+				name="user[username]" placeholder="Username">
+		</div>
+		<div class="form-group">
+	    <label for="user_password">Password</label>
+	    <input type="password" class="form-control" id="user_password"
+					name="user[password]" placeholder="Password">
+		</div>
+	  <input type="submit" class="btn btn-primary" value="Create New Account">
+	</form>
+</div>
