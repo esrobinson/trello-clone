@@ -26,10 +26,16 @@ $navbar-default-border: none;
 @import "bootstrap";
 @import "typeahead";
 
-
+#new-board {
+	background-color: #1A5375;
+	width: 100px;
+	padding: 10px;
+	border-radius: 5px;
+}
 
 #board-sidebar{
 	background-color: #EEEEEE;
+	border-radius: 5px;
 }
 
 .list-body{
@@ -39,7 +45,7 @@ $navbar-default-border: none;
 div.board-summary {
 	background-color: #DDD;
 	border-radius: 10px;
-  height: 300px;
+  height: 200px;
   margin: 10px;
 }
 
@@ -68,8 +74,8 @@ div#new-list-wrapper{
 	color: black;
 }
 
-#member-wrapper{
-  display: inline-flex;
+.member-tile {
+  float: left;
 }
 
 .ui-sortable-helper{
@@ -79,7 +85,7 @@ div#new-list-wrapper{
 
 .placeholder{
 	background-color: #ddd;
-	margin-left: -10;
+	margin-left: 0;
 	border-radius: 10px;
 }
 
@@ -96,4 +102,10 @@ div#new-list-wrapper{
 	min-height: 10px;
 	max-height: 300px;
 	overflow: auto;
+}
+
+.checklist{
+	background-color: white;
+	border: thin solid #DDD;
+	border-radius: 5px;
 }

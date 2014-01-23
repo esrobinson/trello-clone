@@ -15,6 +15,8 @@ TrelloClone.Views.ShowChecklist = Backbone.View.extend({
   render: function render() {
     var view = this;
     var items = this.model.get('items');
+
+		this.$el.addClass('checklist')
     this.$el.html(this.template({ checklist: this.model }));
 		this.$el.data('id', this.model.id);
     items.each(function(item){

@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   include Gravtastic
-  gravtastic :size => 30, :default => "identicon"
+  gravtastic :size => 20, :default => "identicon"
 
   attr_accessible :avatar, :email, :name, :password, :username
   attr_reader :password

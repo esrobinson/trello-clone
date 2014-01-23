@@ -3,6 +3,9 @@ class Card < ActiveRecord::Base
   validates :list, :name, :presence => true
 
   belongs_to :list, :inverse_of => :cards
-  has_many :comments, :inverse_of => :card
-  has_many :checklists, :order => "position ASC", :inverse_of => :card
+  has_many :comments, :inverse_of => :card, :dependent => :destroy
+  has_many :checklists,
+           :order => "position ASC",
+           :inverse_of => :card,
+           :dependent => :destroy
 end

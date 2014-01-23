@@ -20,7 +20,7 @@ TrelloClone.Views.NewComment = Backbone.View.extend({
 	submit: function submit(event){
 		event.preventDefault();
 		formData = $(event.currentTarget).serializeJSON();
-		formData.author = TrelloClone.user.username
+		formData.author = TrelloClone.user.get('username');
 		this.collection.create(formData, {
 			wait: true
 		});
