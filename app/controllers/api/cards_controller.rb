@@ -6,7 +6,8 @@ class Api::CardsController < ApplicationController
     @card = Card.new(params[:card])
     @list = List.find_by_id(params[:list_id])
     @card.list = @list
-    @card.position = @list.cards.last.position + 1
+    @card.position = 0
+    @card.position = @list.cards.last.position + 1 if @list.cards.last
     if @card.save
       render :json => @card
     else
