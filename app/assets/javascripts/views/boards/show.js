@@ -19,9 +19,6 @@ TrelloClone.Views.BoardShow = Backbone.View.extend({
 		lists.each(function appendList(list){
       listView = new TrelloClone.Views.ListShow({model: list});
       view.$("#lists-list").append(listView.render().$el);
-      if(lists.indexOf(list) % 4 == 3){
-        view.$("#lists-list").append($('<div>').addClass("clearfix"));
-      }
     });
 		this.$("#board-sidebar").html(sidebar.render().$el);
 
