@@ -13,8 +13,15 @@
  */
 
 $body-bg: #23719F;
-$navbar-default-bg: #1A5375;
+
+$navbar-height: 30px;
+$navbar-default-bg: rgba(0,0,0,0.1);
 $navbar-default-link-color: #DDD;
+$navbar-border-radius: 0;
+$navbar-default-border: none;
+
+
+
 
 @import "bootstrap";
 @import "typeahead";
