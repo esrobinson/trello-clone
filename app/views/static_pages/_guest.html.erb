@@ -1,0 +1,10 @@
+<form action="<%= session_url %>" method="POST">
+  <input type="hidden" name="authenticity_token"
+           value="<%= form_authenticity_token %>">
+  <input type="hidden" id="user_email" name="user[email]"
+		 value="guest@user.com">
+    <br>
+    <input type="hidden" id="user_password" name="user[password]"
+		 value="password">
+  <input type="submit" class="btn-lg btn-success" value="Log in as guest!">
+</form>

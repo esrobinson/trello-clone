@@ -32,7 +32,7 @@ TrelloClone.Views.BoardShow = Backbone.View.extend({
 			items: "> div:not(.clearfix)",
 			distance: 20,
 			update: view.updateListPosition.bind(view),
-			placeholder: 'col-md-3 col-sm-6 placeholder',
+			placeholder: 'col-md-3 col-sm-6 list-placeholder',
 			start: function(event, ui){
 				ui.placeholder.height(ui.item.height());
 			}

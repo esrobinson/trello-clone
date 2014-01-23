@@ -12,13 +12,34 @@
  *= require_tree .
  */
 
+$body-bg: #23719F;
+$navbar-default-bg: #1A5375;
+$navbar-default-link-color: #DDD;
+
 @import "bootstrap";
 @import "typeahead";
 
+#board-sidebar{
+	background-color: #EEEEEE;
+}
+
+.list-body{
+	background-color: #DDD;
+}
+
 div.board-summary {
-  border: solid thin black;
+	background-color: #DDD;
+	border-radius: 10px;
   height: 300px;
   margin: 10px;
+}
+
+div#new-list-wrapper{
+	background-color: #1A5375;
+	border-radius: 5px;
+	a {
+		color: rbga(255, 255, 255, 0.7);
+	}
 }
 
 .checked {
@@ -49,7 +70,12 @@ div.board-summary {
 
 .placeholder{
 	background-color: #ddd;
-	margin: 0;
+	margin-left: -10;
+	border-radius: 10px;
+}
+
+.list-placeholder{
+	background-color: #1A5375;
 	border-radius: 10px;
 }
 

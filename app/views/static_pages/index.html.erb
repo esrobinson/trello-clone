@@ -1,14 +1,5 @@
 <div class="jumbotron">
 	<h1>TrelloClone</h1>
 	<p>This is a clone of Trello built in Rails and Backbone.js</p>
-	<form action="<%= session_url %>" method="POST">
-	  <input type="hidden" name="authenticity_token"
-	           value="<%= form_authenticity_token %>">
-	  <input type="hidden" id="user_email" name="user[email]"
-			 value="guest@user.com">
-	    <br>
-	    <input type="hidden" id="user_password" name="user[password]"
-			 value="password">
-	  <input type="submit" class="btn-lg btn-success" value="Log in as guest!">
-	</form>
+	<%= render "guest" %>
 </div>
