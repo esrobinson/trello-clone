@@ -56,3 +56,9 @@ div.board-summary {
 .col-md-3:nth-child(4n+1){
     clear: left;
 }
+
+.cards-list{
+	min-height: 10px;
+	max-height: 300px;
+	overflow: auto;
+}
