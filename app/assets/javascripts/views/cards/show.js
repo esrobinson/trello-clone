@@ -2,15 +2,17 @@ TrelloClone.Views.ShowCard = Backbone.View.extend({
 
   initialize: function(options){
     var view = this;
+		this.collection = this.model.collection;
     this.$el.on('hidden.bs.modal', function(e){
       view.remove();
-      view.model.collection.list.trigger("change:cards");
+      view.collection.list.trigger("change:cards");
     });
   },
 
   events: {
     "submit form#new-board-form": "submit",
-    "click button#submit-board": "submit"
+    "click button#submit-board": "submit",
+		"click button#delete-card": "destroy"
   },
 
   template: JST["cards/show"],
@@ -48,5 +50,10 @@ TrelloClone.Views.ShowCard = Backbone.View.extend({
         view.$el.modal('hide');
       }
     });
-  }
+  },
+
+	destroy: function destroy(){
+		this.model.destroy();
+		this.$el.modal('hide');
+	}
 })
