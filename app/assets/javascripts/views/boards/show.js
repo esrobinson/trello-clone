@@ -36,6 +36,9 @@ TrelloClone.Views.BoardShow = Backbone.View.extend({
 			placeholder: 'col-md-3 col-sm-6 list-placeholder',
 			start: function(event, ui){
 				ui.placeholder.height(ui.item.height());
+				ui.placeholder.width(ui.placeholder.width() - 15);
+				ui.placeholder.css('margin-right', 15);
+				ui;
 			}
 		}).disableSelection();
 	},
