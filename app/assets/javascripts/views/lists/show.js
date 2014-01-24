@@ -88,6 +88,7 @@ TrelloClone.Views.ListShow = Backbone.View.extend({
     cards = this.model.get('cards')
     form = new TrelloClone.Views.NewCard({ collection: cards})
     $wrapper.html(form.render().$el);
+		$("#new-card-text").focus();
   },
 
   showCard: function showCard(event){

@@ -19,6 +19,7 @@ TrelloClone.Views.ListName = Backbone.View.extend({
 	nameForm: function nameForm(){
 		var formView = new TrelloClone.Views.ListNameForm({ model: this.model});
 		this.$el.html(formView.render().$el);
+		this.$("#list-name-text").focus();
 		return this;
 	}
 
