@@ -1,4 +1,4 @@
-<div class="col-xs-4 col-xs-offset-4">
+<div class="col-xs-4 col-xs-offset-4 jumbotron">
 	<h3>Sign In</h3>
 	<form action="<%= session_url %>" method="POST">
 	  <input type="hidden" name="authenticity_token"
@@ -6,7 +6,7 @@
 		<div class="form-group">
 		  <label for="user_email">Email</label>
 		  <input type="text" class="form-control" id="user_email"
-				name="user[email]" placeholder="Enter Email">
+				name="user[email]" placeholder="Email">
 		</div>
 		<div class="form-group">
 	    <label for="user_password">Password</label>
