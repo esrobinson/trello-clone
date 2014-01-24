@@ -104,8 +104,13 @@ div#new-list-wrapper{
 	overflow: auto;
 }
 
+#checklists-show-wrapper{
+	overflow: auto;
+}
+
 .checklist{
 	background-color: white;
 	border: thin solid #DDD;
 	border-radius: 5px;
+	margin-bottom: 10px;
 }

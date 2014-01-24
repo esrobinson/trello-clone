@@ -5,6 +5,7 @@ TrelloClone.Views.BoardMembers = Backbone.View.extend({
 	render: function render(){
 		var view = this;
 		var members = this.model.get('members');
+		if(members.length === 0) members.add(TrelloClone.user);
 		var addMember = new TrelloClone.Views.AddMember({ model: this.model });
 
 		this.$el.html(this.template());
