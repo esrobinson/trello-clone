@@ -21,9 +21,7 @@ TrelloClone.Views.NewComment = Backbone.View.extend({
 		event.preventDefault();
 		formData = $(event.currentTarget).serializeJSON();
 		formData.author = TrelloClone.user.get('username');
-		this.collection.create(formData, {
-			wait: true
-		});
+		this.collection.create(formData, {});
 	},
 
 	expandForm: function expandForm(event){
